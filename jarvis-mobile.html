@@ -300,7 +300,7 @@ async function sendMsg(text){
     const r=await fetch('/chat',{
       method:'POST',
       headers:{'Content-Type':'application/json','x-api-key':API_KEY},
-      body:JSON.stringify({model:'claude-3-haiku-20240307',max_tokens:1024,system:SYSTEM,messages:history,stream:false})
+      body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:1024,system:SYSTEM,messages:history,stream:false})
     });
     const j=await r.json();
     if(j.error){th.remove();addSys(`API Error (${r.status}): ${j.error.type} — ${j.error.message}`);setMode('idle');return;}
