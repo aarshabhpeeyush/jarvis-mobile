@@ -303,6 +303,7 @@ async function sendMsg(text){
       body:JSON.stringify({model:'claude-opus-5',max_tokens:1024,system:SYSTEM,messages:history,stream:false})
     });
     const j=await r.json();
+    if(j.error){th.remove();addSys(`API Error: ${j.error.message}`);setMode('idle');return;}
     const reply=j.content?.[0]?.text||'I seem to have encountered an error, Sir.';
     th.remove();
 
